@@ -7,4 +7,3 @@
 
 - name: Perform Molecule Tests
   ansible.builtin.include_tasks: lint.yml
-  

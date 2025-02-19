@@ -10,3 +10,4 @@
 - name: Lint found files
   ansible.builtin.shell: "ansible-lint {{ item.path }}"
   loop: "{{ tasks_files.files }}"
+
