@@ -18,7 +18,9 @@
 - debug: msg="{{ tasks_files.results }}"
 
 - name: Lint found files
-  ansible.builtin.shell: "ansible-lint {{ item.files[0].path }}"
+  ansible.builtin.shell: |
+    unset ANSIBLE_COLLECTIONS_PATHS
+    ansible-lint {{ item.files[0].path }}
   loop: "{{ tasks_files.results }}"
   args:
     chdir: "./collections/ansible_collections/{{ project_dir }}/extensions"
