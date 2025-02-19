@@ -1,6 +1,6 @@
 ---
 - name: Initialize scenario
-  ansible.builtin.command: molecule init scenario --driver-name podman
+  ansible.builtin.command: molecule init scenario
   args:
     chdir: "{{ project_dir }}"
 
