@@ -26,6 +26,7 @@
   environment:
     ANSIBLE_COLLECTIONS_PATH: "./collections/ansible_collections/{{ project_dir }}/extensions"
   register: lint_results
+  no_log: true
 
 - debug: msg="{{ lint_results | to_json }}"
 
