@@ -3,6 +3,8 @@
   ansible.builtin.command: molecule init scenario
   args:
     chdir: "{{ project_dir }}"
+  environment:
+    ANSIBLE_COLLECTIONS_PATH: /usr/share/ansible/collections/ansible_collections
 
 - name: Perform molecule tests
   ansible.builtin.command: molecule test
