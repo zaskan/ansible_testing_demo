@@ -12,3 +12,9 @@
     git_directory: "./collections/ansible_collections/{{ project_dir }}"
     git_operation: clone
   register: git_result
+
+- name: Create extensions directory in the content collection
+  ansible.builtin.file:
+    path: "./collections/ansible_collections/{{ project_dir }}/extensions"
+    state: directory
+

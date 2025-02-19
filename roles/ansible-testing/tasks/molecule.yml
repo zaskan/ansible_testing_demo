@@ -1,10 +1,13 @@
 ---
+- name: Unset ANSIBLE_COLLECTIONS_PATH
+  command: unset ANSIBLE_COLLECTIONS_PATH
+  
 - name: Initialize scenario
   ansible.builtin.command: molecule init scenario
   args:
-    chdir: "{{ project_dir }}"
+    chdir: "./collections/ansible_collections/{{ project_dir }}/extensions"
   environment:
-    ANSIBLE_COLLECTIONS_PATH: /usr/share/ansible/collections/ansible_collections
+    ANSIBLE_COLLECTIONS_PATH: "./collections/ansible_collections/{{ project_dir }}/extensions"
 
 - name: Perform molecule tests
   ansible.builtin.command: molecule test
