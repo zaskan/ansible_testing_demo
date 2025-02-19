@@ -15,12 +15,10 @@
   register: tasks_files
   loop: "{{ roles_directories.files }}"
 
-- debug: msg="{{ tasks_files.results }}"
-
-- name: Lint found files
+- name: "Linting {{ item.files[0].path }}"
   ansible.builtin.shell: |
     unset ANSIBLE_COLLECTIONS_PATHS
-    ansible-lint -p {{ item.files[0].path }}
+    ansible-lint -f json {{ item.files[0].path }}
   loop: "{{ tasks_files.results }}"
   environment:
     ANSIBLE_COLLECTIONS_PATH: "./collections/ansible_collections/{{ project_dir }}/extensions"
