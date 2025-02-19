@@ -2,7 +2,7 @@
 - name: "Linting files"
   ansible.builtin.shell: |
     unset ANSIBLE_COLLECTIONS_PATHS
-    ansible-lint --profile {{ profile | default('basic') }} -p -q -f json
+    ansible-lint --profile {{ lint_profile | default('basic') }} -p -q -f json
   args:
     chdir: "./collections/ansible_collections/{{ project_dir }}"
   environment:

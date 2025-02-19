@@ -9,6 +9,7 @@ Role Variables
 
 project_git_url: Git url containing the ansible project to test 
 project_dir: Local directory to download the project
+lint_profile: Testing level for lint {min,basic,moderate,safety,shared,production}
 
 Dependencies
 ------------
