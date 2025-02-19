@@ -14,7 +14,7 @@
     paths: "{{ item.path }}"
   register: tasks_files
   loop: "{{ roles_directories.files }}"
-
+- debug: msg="{{ tasks_files }}"
 - name: Lint found files
   ansible.builtin.shell: "ansible-lint {{ item.path }}"
   loop: "{{ tasks_files.files }}"
