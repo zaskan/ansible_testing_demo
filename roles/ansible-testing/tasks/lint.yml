@@ -27,3 +27,5 @@
     ANSIBLE_COLLECTIONS_PATH: "./collections/ansible_collections/{{ project_dir }}/extensions"
   register: lint_results
 
+- debug: msg="{{ lint_results | to_json }}"
+
