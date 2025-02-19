@@ -7,10 +7,10 @@
   args:
     chdir: "./collections/ansible_collections/{{ project_dir }}/extensions"
   environment:
+    ANSIBLE_COLLECTIONS_PATHS: ""
     ANSIBLE_COLLECTIONS_PATH: "./collections/ansible_collections/{{ project_dir }}/extensions"
 
 - name: Perform molecule tests
   ansible.builtin.command: molecule test
   args:
     chdir: "{{ project_dir }}"
-    
