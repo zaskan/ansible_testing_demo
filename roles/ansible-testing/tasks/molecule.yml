@@ -8,7 +8,7 @@
   environment:
     ANSIBLE_COLLECTIONS_PATH: "./collections/ansible_collections/{{ project_dir }}/extensions"
 
-- name: Perform tests
+- name: Perform Idempotence tests
   ansible.builtin.shell: |
     unset ANSIBLE_COLLECTIONS_PATHS
     molecule test idempotence

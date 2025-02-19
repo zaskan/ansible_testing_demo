@@ -4,4 +4,7 @@
 
 - name: Perform Molecule Tests
   ansible.builtin.include_tasks: molecule.yml
+
+- name: Perform Molecule Tests
+  ansible.builtin.include_tasks: lint.yml
   
