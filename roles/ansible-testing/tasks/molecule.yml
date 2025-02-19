@@ -11,7 +11,7 @@
 - name: Perform tests
   ansible.builtin.shell: |
     unset ANSIBLE_COLLECTIONS_PATHS
-    molecule test
+    molecule test idempotence
   args:
     chdir: "./collections/ansible_collections/{{ project_dir }}/extensions"
   environment:

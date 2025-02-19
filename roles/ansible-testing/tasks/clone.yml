@@ -18,3 +18,4 @@
     path: "./collections/ansible_collections/{{ project_dir }}/extensions"
     state: directory
 
+
