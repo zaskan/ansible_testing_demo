@@ -1,11 +1,19 @@
 ---
-- name: Perform tests
+- name: Init Molecule Scenario
   ansible.builtin.shell: |
     unset ANSIBLE_COLLECTIONS_PATHS
     molecule init scenario
-    molecule test
-    exit 0
   args:
     chdir: "./collections/ansible_collections/{{ project_dir }}/extensions"
   environment:
     ANSIBLE_COLLECTIONS_PATH: "./collections/ansible_collections/{{ project_dir }}/extensions"
+
+- name: Perform tests
+  ansible.builtin.shell: |
+    unset ANSIBLE_COLLECTIONS_PATHS
+    molecule test
+  args:
+    chdir: "./collections/ansible_collections/{{ project_dir }}/extensions"
+  environment:
+    ANSIBLE_COLLECTIONS_PATH: "./collections/ansible_collections/{{ project_dir }}/extensions"
+
