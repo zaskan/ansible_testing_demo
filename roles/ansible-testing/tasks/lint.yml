@@ -20,4 +20,8 @@
 - name: Lint found files
   ansible.builtin.shell: "ansible-lint {{ item.files[0].path }}"
   loop: "{{ tasks_files.results }}"
+  args:
+    chdir: "./collections/ansible_collections/{{ project_dir }}/extensions"
+  environment:
+    ANSIBLE_COLLECTIONS_PATH: "./collections/ansible_collections/{{ project_dir }}/extensions"
 
