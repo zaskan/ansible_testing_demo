@@ -1,0 +1,13 @@
+---
+- name: Create Project Directory
+  ansible.builtin.file:
+    path:  "./{{ project_dir }}"
+
+- name: Clone Ansible Project Repository
+  ansible.builtin.include_role:
+    name: demos.utils.git
+  vars:
+    git_repository: "{{ project_git_url }}"
+    git_directory: "{{ project_dir }}"
+    git_operation: clone
+  register: git_result
