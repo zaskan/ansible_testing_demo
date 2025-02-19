@@ -1,32 +1,12 @@
 ---
-- name: Find tasks directories
-  ansible.builtin.find:
-    file_type: directory
-    patterns: "tasks"
-    recurse: true
-    paths: "."
-  register: roles_directories
-
-- name: Find tasks files
-  ansible.builtin.find:
-    file_type: file
-    recurse: true
-    paths: "{{ item.path }}"
-    patterns: "*.yml,*.yaml"
-  register: tasks_files
-  loop: "{{ roles_directories.files }}"
-
-- debug: msg="{{ tasks_files.results }}"
-
-- name: "Linting {{ item.files[0].path }}"
+- name: "Linting files"
   ansible.builtin.shell: |
     unset ANSIBLE_COLLECTIONS_PATHS
-    ansible-lint -p -q -f json {{ item.files[0].path }}
-  loop: "{{ tasks_files.results }}"
+    ansible-lint -p -q -f json {{ item.path }}
+  loop: "{{ roles_directories.files }}"
   environment:
     ANSIBLE_COLLECTIONS_PATH: "./collections/ansible_collections/{{ project_dir }}/extensions"
   register: lint_results
-  no_log: true
 
 - debug: msg="{{ lint_results | to_json }}"
 
