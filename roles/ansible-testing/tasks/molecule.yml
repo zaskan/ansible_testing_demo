@@ -6,7 +6,7 @@
   args:
     chdir: "./collections/ansible_collections/{{ project_dir }}/extensions"
   environment:
-    ANSIBLE_COLLECTIONS_PATH: "./collections/ansible_collections/{{ project_dir }}/extensions"
+    ANSIBLE_COLLECTIONS_PATH: "./collections/ansible_collections"
 
 - name: Perform Idempotence tests
   ansible.builtin.shell: |
@@ -15,5 +15,5 @@
   args:
     chdir: "./collections/ansible_collections/{{ project_dir }}/extensions"
   environment:
-    ANSIBLE_COLLECTIONS_PATH: "./collections/ansible_collections/{{ project_dir }}/extensions"
+    ANSIBLE_COLLECTIONS_PATH: "./collections/ansible_collections"
 

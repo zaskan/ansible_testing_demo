@@ -2,10 +2,11 @@
 - name: "Linting files"
   ansible.builtin.shell: |
     unset ANSIBLE_COLLECTIONS_PATHS
-    ansible-lint -p -q -f json {{ item.path }}
-  loop: "{{ roles_directories.files }}"
+    ansible-lint -p -q -f json
+  args:
+    chdir: "./collections/ansible_collections/{{ project_dir }}"
   environment:
-    ANSIBLE_COLLECTIONS_PATH: "./collections/ansible_collections/{{ project_dir }}/extensions"
+    ANSIBLE_COLLECTIONS_PATH: "./collections/ansible_collections"
   register: lint_results
 
 - debug: msg="{{ lint_results | to_json }}"
