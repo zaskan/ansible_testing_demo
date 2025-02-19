@@ -19,5 +19,5 @@
 
 - name: Lint found files
   ansible.builtin.shell: "ansible-lint {{ item.path }}"
-  loop: "{{ tasks_files.results.files }}"
+  loop: "{{ tasks_files.results }}"
 
