@@ -12,6 +12,7 @@
     file_type: file
     recurse: true
     paths: "{{ item.path }}"
+    patterns: "*.yml,*.yaml"
   register: tasks_files
   loop: "{{ roles_directories.files }}"
 
