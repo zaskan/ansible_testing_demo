@@ -18,7 +18,7 @@
 - name: "Linting {{ item.files[0].path }}"
   ansible.builtin.shell: |
     unset ANSIBLE_COLLECTIONS_PATHS
-    ansible-lint -f json {{ item.files[0].path }}
+    ansible-lint -p -q -f json {{ item.files[0].path }}
   loop: "{{ tasks_files.results }}"
   environment:
     ANSIBLE_COLLECTIONS_PATH: "./collections/ansible_collections/{{ project_dir }}/extensions"
