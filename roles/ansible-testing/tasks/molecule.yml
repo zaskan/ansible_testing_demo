@@ -1,8 +1,6 @@
 ---
 - name: Unset ANSIBLE_COLLECTIONS_PATH
-  command: unset ANSIBLE_COLLECTIONS_PATH
-  environment: 
-    PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+  ansible.builtin.shell: "unset ANSIBLE_COLLECTIONS_PATHS"
 
 - name: Initialize scenario
   ansible.builtin.command: molecule init scenario
