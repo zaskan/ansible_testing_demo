@@ -18,6 +18,6 @@
 - debug: msg="{{ tasks_files.results }}"
 
 - name: Lint found files
-  ansible.builtin.shell: "ansible-lint {{ item }}"
+  ansible.builtin.shell: "ansible-lint {{ item.files[0].path }}"
   loop: "{{ tasks_files.results }}"
 
