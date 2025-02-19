@@ -2,6 +2,7 @@
 - name: Create Project Directory
   ansible.builtin.file:
     path:  "./{{ project_dir }}"
+    state: directory
 
 - name: Clone Ansible Project Repository
   ansible.builtin.include_role:
