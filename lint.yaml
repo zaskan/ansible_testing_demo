@@ -1,0 +1,8 @@
+---
+- name: Perform Molecule tests to an Ansible project
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Download project repository
+      ansible.builtin.include_role:
+        name: ansible-testing
