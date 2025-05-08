@@ -16,7 +16,7 @@
         git_operation: clone
       register: git_result
 
-    - command: tree /tmp/{{ operation_time }}
+    - command: ls -la /tmp/{{ operation_time }}/extensions
 
     - name: Execute molecule tests
       ansible.builtin.command: molecule test /tmp/{{ operation_time }}/extensions
