@@ -17,6 +17,6 @@
       register: git_result
 
     - name: Execute lint test
-      ansible.builtin.command: ansible-lint /tmp/{{ operation_time }}/roles/backup_file/tasks/
+      ansible.builtin.command: ansible-lint --nocolor -p /tmp/{{ operation_time }}/roles/backup_file/tasks/
       register: lint_results
       changed_when: lint_results.rc == 0
