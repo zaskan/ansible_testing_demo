@@ -1,8 +1,12 @@
 ---
 - name: Pass lint test to an Ansible Collection
   hosts: all
-  gather_facts: false
+  gather_facts: true
   tasks:
+    - name: Get current date
+      ansible.builtin.set_fact:
+        operation_time: "{{ ansible_date_time.iso8601_basic_short }}"
+
     - name: Clone Configuration Repository
       ansible.builtin.include_role:
         name: demos.utils.git

@@ -1,8 +1,12 @@
 ---
 - name: Push collection to automation hub
-  gather_facts: false
+  gather_facts: true
   hosts: localhost
   tasks:
+    - name: Get current date
+      ansible.builtin.set_fact:
+        operation_time: "{{ ansible_date_time.iso8601_basic_short }}"
+  
     - name: Clone Configuration Repository
       ansible.builtin.include_role:
         name: demos.utils.git
@@ -57,4 +61,5 @@
         version: "{{ version }}"
         validate_certs: false
         request_timeout: 10
+        
       register: output
