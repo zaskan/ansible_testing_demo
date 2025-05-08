@@ -1,0 +1,22 @@
+---
+- name: Pass lint test to an Ansible Collection
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Get current date
+      ansible.builtin.set_fact:
+        operation_time: "{{ ansible_date_time.iso8601_basic_short }}"
+
+    - name: Clone Configuration Repository
+      ansible.builtin.include_role:
+        name: demos.utils.git
+      vars:
+        git_repository: "{{ repository }}"
+        git_directory: "/tmp/{{ operation_time }}"
+        git_operation: clone
+      register: git_result
+
+    - name: Execute lint test
+      ansible.builtin.command: ansible-lint /tmp/{{ operation_time }}/roles/backup_file/tasks/
+      register: lint_results
+      changed_when: lint_results.rc == 0
