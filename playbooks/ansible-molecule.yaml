@@ -14,6 +14,7 @@
         git_repository: "{{ repository }}"
         git_directory: "/tmp/{{ operation_time }}"
         git_operation: clone
+        version: non-ocp
       register: git_result
 
     - command: ls -la /tmp/{{ operation_time }}/extensions
