@@ -1,4 +1,4 @@
 collections:
   - name: https://github.com/zaskan/demos.utils.git
     type: git
-    version: main
+    version: Add-git-branch
