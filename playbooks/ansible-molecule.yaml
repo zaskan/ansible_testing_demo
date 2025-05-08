@@ -17,6 +17,6 @@
       register: git_result
 
     - name: Execute molecule tests
-      ansible.builtin.command: molecule test "{{ repository }}"
+      ansible.builtin.command: molecule test /tmp/{{ operation_time }}/extensions
       register: molecule_results
       changed_when: molecule_results.rc == 0
