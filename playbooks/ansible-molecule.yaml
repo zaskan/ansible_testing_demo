@@ -19,6 +19,8 @@
     - command: ls -la /tmp/{{ operation_time }}/extensions
 
     - name: Execute molecule tests
-      ansible.builtin.command: molecule test /tmp/{{ operation_time }}/extensions
+      ansible.builtin.command: molecule test 
+      args:
+        chdir: /tmp/{{ operation_time }}/extensions
       register: molecule_results
       changed_when: molecule_results.rc == 0
